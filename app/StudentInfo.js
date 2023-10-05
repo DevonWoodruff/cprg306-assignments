@@ -17,5 +17,5 @@ function CourseSection() {
 }
 
 function MyGitHubRepo() {
-    return <a href="https://github.com/DevonWoodruff/cprg306-assignments">GitHub</a>
+    return <a className="text-yellow-300" href="https://github.com/DevonWoodruff/cprg306-assignments">GitHub</a>
 }
