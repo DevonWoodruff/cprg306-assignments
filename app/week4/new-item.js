@@ -8,15 +8,18 @@ export default function NewItem() {
     const [category, setCategory] = useState("");
     const [itemCreated, setItemCreated] = useState(false);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = (item) => {
         
-        const newEvent = {
+        item.preventDefault();
+
+        alert(`Submitted item: ${name} quantity: ${quantity} category: ${category}`);
+        
+        const newItem = {
             name,
             quantity,
             category,
         };
-        console.log(newEvent);
+        console.log(newItem);
 
         setItemCreated(true);
 
@@ -25,18 +28,20 @@ export default function NewItem() {
         setCategory("");
 
         setItemCreated(false);
+
+        
     };
 
-    const handleNameChange = (event) => {
-        setName(event.target.value);
+    const handleNameChange = (item) => {
+        setName(item.target.value);
     };
 
-    const handleQuantityChange = (event) => {
-        setQuantity(event.target.value);
+    const handleQuantityChange = (item) => {
+        setQuantity(item.target.value);
     };
 
-    const handleCategoryChange = (event) => {
-        setCategory(event.target.value);
+    const handleCategoryChange = (item) => {
+        setCategory(item.target.value);
     };
 
     return (
@@ -58,7 +63,7 @@ export default function NewItem() {
                             Name:
                             <input
                                 className=" border border-sky-600 bg-blue-400 w-max p-2 m-4"
-                                type="text"
+                                type="text" required
                                 value={name}
                                 onChange={handleNameChange}
                             />
@@ -74,7 +79,12 @@ export default function NewItem() {
                         </label>
                         <label className="text-xl font-bold">
                             Category:
-                            <select className="border border-sky-600 bg-blue-400 w-max p-2 m-4">
+                            <select 
+                            className="border border-sky-600 bg-blue-400 w-max p-2 m-4"                            
+                            value={category} 
+                            type="text" required
+                            onChange={handleCategoryChange}>
+                            <option></option>
                             <option value="Produce">Produce</option>
                             <option value="Dairy">Dairy</option>
                             <option value="Bakery">Bakery</option>
@@ -85,11 +95,7 @@ export default function NewItem() {
                             <option value="Beverages">Beverages</option>
                             <option value="Snacks">Snacks</option>
                             <option value="Household">Household</option>
-                            <option value="Other">Other</option>
-                                
-                                option value="produce"
-                                value={category}
-                                onChange={handleCategoryChange}
+                            <option value="Other">Other</option>                       
                             </select>
                         </label>
                         <input
