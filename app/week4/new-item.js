@@ -46,23 +46,23 @@ export default function NewItem() {
 
     return (
         <main>
-            <div className="flex flex-col items-center">
+            <div>
                 {itemCreated && (
                     <div className="border border-sky-600 bg-blue-400 w-max p-2 m-4">
                         Item Created
                     </div>
                 )}
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center justify-center">
                 <h1 className="pl-5 pt-5 text-xl font-bold">
                     Create New Item
                 </h1>
                 <form onSubmit={handleSubmit}>
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col ">
                         <label className="text-xl font-bold">
                             Name:
                             <input
-                                className=" border border-sky-600 bg-blue-400 w-max p-2 m-4"
+                                className="border border-sky-600 bg-blue-400 w-max p-2 m-4"
                                 type="text" required
                                 value={name}
                                 onChange={handleNameChange}
@@ -71,7 +71,7 @@ export default function NewItem() {
                         <label className="text-xl font-bold">
                             Quantity:
                             <input
-                                className="border border-sky-600 bg-blue-400 w-max p-2 m-4"
+                                className="border border-sky-600 bg-blue-400 w-max p-2 m-4 "
                                 type="number" min="1" max="99" required
                                 value={quantity}
                                 onChange={handleQuantityChange}
