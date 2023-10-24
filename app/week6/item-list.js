@@ -48,6 +48,7 @@ export default function ItemList() {
   
     return (
       <div className="w-max p-2 m-4">
+        <NewItem onAddItem={handleAddItem} />
         <button
           className="m-2"
           onClick={handleSortByName}
@@ -62,7 +63,6 @@ export default function ItemList() {
           Sort By Category
         </button>
         {itemComponents}
-        <NewItem onAddItem={handleAddItem} />
       </div>
     );
   }
