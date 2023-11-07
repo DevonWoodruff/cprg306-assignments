@@ -12,6 +12,7 @@ export default function Page() {
       <Link className="pl-2 text-yellow-400" href="/week5">Week 5</Link>
       <Link className="pl-2 text-orange-400" href="/week6">Week 6</Link>
       <Link className="pl-2 text-purple-600" href="/week7">Week 7</Link>
+      <Link className="pl-2 text-pink-600" href="/week8">Week 8</Link>
     </main>
   )
 }
