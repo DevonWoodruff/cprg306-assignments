@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Item from "./item";
-import itemsData from "./items.json";
 import NewItem from "./new-item";
+import getItems from "../_services/shopping-list-service";
 
-const ItemList = ({ onItemSelect }) => {
-  const [items, setItems] = useState(itemsData);
+
+const ItemList = ({ onItemSelect, items, setItems }) => {
   const [sortBy, setSortBy] = useState("name");
+
+  useEffect(() => {
+    const fetch = async () => {
+      console.log(await getItems())
+    }
+
+    fetch()
+  }, [])
+  
 
   const handleSortByName = () => {
     setSortBy("name");
@@ -31,10 +40,6 @@ const ItemList = ({ onItemSelect }) => {
     setItems(sortedItems);
   };
 
-  const handleAddItem = (newItem) => {
-    setItems([...items, newItem]);
-  };
-
   const cleanItemName = (itemName) => {
     // Remove size and emoji from item name
     const cleanedName = itemName.split(",")[0].trim();
@@ -46,7 +51,7 @@ const ItemList = ({ onItemSelect }) => {
 
   const itemComponents = items.map((item) => (
     <Item
-      key={item.id}
+      key={item.name}
       name={cleanItemName(item.name)} // Clean up the item name
       quantity={item.quantity}
       category={item.category}
@@ -56,7 +61,6 @@ const ItemList = ({ onItemSelect }) => {
 
   return (
     <div className="w-max p-2 m-4">
-      <NewItem onAddItem={handleAddItem} />
       <button
         className="m-2"
         onClick={handleSortByName}

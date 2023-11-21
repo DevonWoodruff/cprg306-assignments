@@ -6,13 +6,12 @@ import { useState } from "react";
 import Link from "next/link";
 import ItemList from "./shopping-list/item-list";
 import NewItem from "./shopping-list/new-item";
-import itemsData from "./shopping-list/items.json";
 import MealIdeas from "./shopping-list/meal-ideas";
 
 const Page = () => {
 
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
-  const [items, setItems] = useState(itemsData);
+  const [items, setItems] = useState([]);
   const [selectedItemName, setSelectedItemName] = useState(null); // New state variable to hold the name of the selected item
 
   const handleAddItem = (newItem) => {
@@ -36,7 +35,7 @@ const Page = () => {
     <button onClick={firebaseSignOut}>Sign Out</button>
     <div className="flex">
       <div>
-        <ItemList items={items} onItemSelect={handleItemSelect} /> {/* Pass the handleItemSelect function as the onItemSelect prop */}
+        <ItemList items={items} onItemSelect={handleItemSelect} setItems={setItems} /> {/* Pass the handleItemSelect function as the onItemSelect prop */}
         <NewItem onAddItem={handleAddItem} />
         <Link className="text-blue-400" href="/">
           Back To Home

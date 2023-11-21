@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const Item = ({ name, quantity, category, onSelect }) => {
   const handleClick = () => {
     onSelect(); // Trigger the onSelect function when the item is clicked
